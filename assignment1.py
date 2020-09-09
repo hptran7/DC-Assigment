@@ -16,11 +16,11 @@ def add(num1, num2):
     return num1 +num2
 def sub(num1,num2):
     return num1- num2
-def mul(num1, num2):
+def mul(num1, num2):         
     return num1 * num2
 def div(num1, num2):
     return num1/num2
-    
+
 number1 = float(input("Please enter your first number: "))
 number2 = float(input("Please enter your second number: "))
 operand = input("Please enter you operand: ")
