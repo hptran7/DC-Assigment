@@ -1,5 +1,5 @@
 def max_number(number):
-    num = 0
+    num = number[0]
     for n in number:
         if n>num:
             num = n
