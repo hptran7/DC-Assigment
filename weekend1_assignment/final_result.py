@@ -1,9 +1,10 @@
+#Function
 from function import *
 def listing():
     for m in range(0,len(task_list)):
-        print(str(m+1) + " - " +task_list[m]["title"] 
-        +" - " + task_list[m]["priority"])
-        
+        print(str(m+1)+ f' - {task_list[m]["title"]} - {task_list[m]["priority"]}')
+
+#Code Assignment:
 print("Press 1 to add task")
 print("Press 2 to delete task")
 print("Press 3 to view all task")
