@@ -31,7 +31,7 @@ class Items:
         self.item_price = item_price
         self.item_quantity = item_quantity
     def __repr__(self):
-        return f"{self.item_title} - price: {self.item_price} - quantity: {self.item_quantity}"
+        return f"{self.item_title} - Price: {self.item_price} - Quantity: {self.item_quantity}"
 
 
 
@@ -45,20 +45,28 @@ Press q to stop:
 while True:
     choice = input("Please make your selection: ")
     if choice == "1":
-        shopping_title = input("Please enter your location name: ")
-        shopping_address = input("Please enter your location address: ")
-        address = Shopping(shopping_title,shopping_address)
-        list.append(address)
-        display3()
+        while True:
+            shopping_title = input("Enter your location name or press \"q\" to stop: ")
+            if shopping_title != "q":
+                shopping_address = input("Please enter your location address: ")
+                address = Shopping(shopping_title,shopping_address)
+                list.append(address)
+                display3()
+            else:
+                break
     elif choice == "3":
         display2()
     elif choice == "2":
         display3()
-        location = int(input("Please enter the shopping location you want to add: "))
-        item_title = input("Please enter your item's name: ")
-        item_price = input("Please enter your item's price: ")
-        item_quantity = input("Please enter your item's quantity: ")
-        item = Items(item_title,item_price,item_quantity)
-        list[location-1].item_list.append(item)
+        while True:
+            location = int(input("Enter the shopping location you want to add of press \"0\" to stop: "))
+            if location != 0:
+                item_title = input("Please enter your item's name: ")
+                item_price = input("Please enter your item's price: ")
+                item_quantity = input("Please enter your item's quantity: ")
+                item = Items(item_title,item_price,item_quantity)
+                list[location-1].item_list.append(item)
+            else:
+                break
     elif choice == "q":
         break
