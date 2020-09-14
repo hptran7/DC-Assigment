@@ -1,10 +1,5 @@
 list =[]
 
-def display():
-    print("Here is your shopping list:")
-    for i in range(0,len(list)):
-        print(f'{i+1} - {list[i].title} - {list[i].address}')
-
 def display3():
     print("Here is your list of stores: ")
     for i in range(0,len(list)):
@@ -35,7 +30,7 @@ class Items:
 
 
 
-# while True:
+def intro():
     print("""
 Press 1 to add store location:
 Press 2 to add items to store:
@@ -43,6 +38,7 @@ Press 3 to view grocery list:
 Press q to stop:
     """)
 while True:
+    intro()
     choice = input("Please make your selection: ")
     if choice == "1":
         while True:
@@ -59,7 +55,7 @@ while True:
     elif choice == "2":
         display3()
         while True:
-            location = int(input("Enter the shopping location you want to add of press \"0\" to stop: "))
+            location = int(input("Enter the shopping location you want to add or press \"0\" to stop: "))
             if location != 0:
                 item_title = input("Please enter your item's name: ")
                 item_price = input("Please enter your item's price: ")
