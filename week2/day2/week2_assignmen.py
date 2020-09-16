@@ -41,7 +41,12 @@ def occupied_display():
         if table.status == "OCCUPIED":
             table.playtime_check()
             print(f"table number {table.number} - playtime: {table.total_playtime} {table.time_frame}")
-
+#function fo write to file            
+def write_file(time_info):
+    today =datetime.date.today().strftime('%m-%d-%Y')
+    today = today+".txt"
+    with open(today,"a") as file:
+        file.write(time_info)
 
 class Table:
     def __init__(self,number):
@@ -102,6 +107,9 @@ while True:
             table_number = int(input("Please choose another table: "))
         print(tables_list[table_number-1].check_out())
         print(tables_list[table_number-1].playtime_check())
+        time_info = f"""
+    table number {tables_list[table_number-1].number} - playtime: {tables_list[table_number-1].total_playtime} {tables_list[table_number-1].time_frame} - Cost: {tables_list[table_number-1].cost}
+    Start time: {tables_list[table_number-1].start_time} - End time: {tables_list[table_number-1].end_time}\n"""
+        write_file(time_info)
     elif choice == "q":
         break
-    
