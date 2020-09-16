@@ -107,6 +107,7 @@ while True:
         while table.status == "OCCUPIED":
             print(f"Pool table {table.number} is currently occupied")
             table_number = int(input("Please choose another table: "))
+            table = tables_list[table_number-1]
         print(table.check_in())
     elif choice == "3":
         table_check = check_occupied()
