@@ -17,8 +17,8 @@ def table_status_display():
         if table.status == "NOT OCCUPIED":
             print(f"Pool table number {table.number}: ")
             print(f"status: {table.status}")
-            print(f"Check in time: {table.start_time} - check out time: {table.end_time}")
-            print(f"Play time: {table.total_playtime} {table.time_frame} - Cost: ${table.cost}")
+            print(f" Previous check in time: {table.start_time} - Previous check out time: {table.end_time}")
+            print(f" Previous play time: {table.total_playtime} {table.time_frame} - Cost: ${table.cost}")
     print("Here is the list of tables that is oppupied")
     for index in range(0,len(tables_list)):
         table = tables_list[index]
@@ -47,6 +47,14 @@ def write_file(time_info):
     today = today+".txt"
     with open(today,"a") as file:
         file.write(time_info)
+#Function to check if there are occupied tables
+def check_occupied ():
+    count = 0
+    for n in range (0,len(tables_list)):
+        table = tables_list[n]
+        if table.status == "OCCUPIED":
+            count += 1
+    return count
 
 class Table:
     def __init__(self,number):
@@ -95,21 +103,27 @@ while True:
     elif choice == "2":
         empty_display()
         table_number = int(input("Please enter the table number you want to check in:"))
-        while tables_list[table_number-1].status == "OCCUPIED":
-            print(f"Pool table {tables_list[table_number-1].number} is currently occupied")
+        table = tables_list[table_number-1]
+        while table.status == "OCCUPIED":
+            print(f"Pool table {table.number} is currently occupied")
             table_number = int(input("Please choose another table: "))
-        print(tables_list[table_number-1].check_in())
+        print(table.check_in())
     elif choice == "3":
-        occupied_display()
-        table_number = int(input("PLease enter the table number you want to check out:"))
-        while tables_list[table_number-1].status == "NOT OCCUPIED":
-            print(f"Pool table {tables_list[table_number-1].number} is currently not occupied")
-            table_number = int(input("Please choose another table: "))
-        print(tables_list[table_number-1].check_out())
-        print(tables_list[table_number-1].playtime_check())
-        time_info = f"""
-    table number {tables_list[table_number-1].number} - playtime: {tables_list[table_number-1].total_playtime} {tables_list[table_number-1].time_frame} - Cost: {tables_list[table_number-1].cost}
-    Start time: {tables_list[table_number-1].start_time} - End time: {tables_list[table_number-1].end_time}\n"""
-        write_file(time_info)
+        table_check = check_occupied()
+        if table_check !=0: 
+            occupied_display()
+            table_number = int(input("PLease enter the table number you want to check out:"))
+            table = tables_list[table_number-1]
+            while table.status == "NOT OCCUPIED":
+                print(f"Pool table {table.number} is currently not occupied")
+                table_number = int(input("Please choose another table: "))
+            print(table.check_out())
+            print(table.playtime_check())
+            time_info = f"""
+    table number {table.number} - playtime: {table.total_playtime} {table.time_frame} - Cost: {table.cost}
+    Start time: {table.start_time} - End time: {table.end_time}\n"""
+            write_file(time_info)
+        else:
+            print("No Pool table is occupied at the moment")
     elif choice == "q":
         break
