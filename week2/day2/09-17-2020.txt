@@ -1,0 +1,6 @@
+
+    table number 1 - playtime: 0.133 Minutes - Cost: 0.0665
+    Start time: 2020-09-17 14:05:30.422846 - End time: 2020-09-17 14:05:39.185065
+
+    table number 2 - playtime: 0.133 Minutes - Cost: 0.0665
+    Start time: 2020-09-17 14:05:33.456518 - End time: 2020-09-17 14:05:42.438448

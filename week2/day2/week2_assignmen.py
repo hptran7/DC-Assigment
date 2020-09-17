@@ -90,7 +90,7 @@ class Table:
 
 
 # Creating 12 tables
-for n in range(0,5):
+for n in range(0,12):
      table = Table(n+1)
      tables_list.append(table)
 
